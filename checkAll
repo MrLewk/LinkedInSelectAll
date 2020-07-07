@@ -1,0 +1,20 @@
+//Copy and paste this into the console in Inspect Element on the LinkedIn invite connections modal
+function check(checked = true) {
+    const cbs = document.querySelectorAll('input[type="checkbox"]');
+    cbs.forEach((cb) => {
+        cb.checked = checked;
+        cb.click();
+    });
+}
+function checkAll() {
+    check();
+    // reassign click event handler
+    this.onclick = uncheckAll.click();
+}
+function uncheckAll() {
+    check(false);
+    // reassign click event handler
+    this.onclick = checkAll.click();
+}
+
+checkAll();
